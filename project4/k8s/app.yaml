@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project4-app
+  namespace: project4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project4-app
+  template:
+    metadata:
+      labels:
+        app: project4-app
+    spec:
+      containers:
+      - name: project4-app
+        image: 104360117424.dkr.ecr.ap-south-1.amazonaws.com/project4-app:v4
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DB_NAME
+          value: complaint_db
+        - name: DB_USER
+          value: project4user
+        - name: DB_HOST
+          value: mariadb
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: project4-db-secret
+              key: db-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: project4-service
+  namespace: project4
+spec:
+  type: LoadBalancer
+  selector:
+    app: project4-app
+  ports:
+  - port: 80
+    targetPort: 8000
