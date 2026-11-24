@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: project4-app
-        image: 104360117424.dkr.ecr.ap-south-1.amazonaws.com/project4-app:build-3
+        image: 104360117424.dkr.ecr.ap-south-1.amazonaws.com/project4-app:build-5
         ports:
         - containerPort: 8000
         env:
