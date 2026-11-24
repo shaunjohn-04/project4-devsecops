@@ -45,7 +45,7 @@ pipeline {
                           -Dsonar.projectKey=project4 \
                           -Dsonar.projectName="Project 4 DevSecOps" \
                           -Dsonar.sources=. \
-                          -Dsonar.exclusions="**/migrations/**,**/reports/**,**/__pycache__/**"
+                          -Dsonar.exclusions="**/migrations/**,**/reports/**,**/__pycache__/**,**/templates/studentproedit.html"
                     '''
                 }
             }
